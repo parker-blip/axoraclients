@@ -1,11 +1,7 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[build.environment]
-  NODE_VERSION = "18"
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
