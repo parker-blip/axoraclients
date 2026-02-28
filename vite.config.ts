@@ -5,6 +5,8 @@ import { viteSingleFile } from 'vite-plugin-singlefile'
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 import { join } from 'path'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 function inlineCssPlugin() {
   return {
     name: 'inline-css',
@@ -26,12 +28,12 @@ function inlineCssPlugin() {
       }
       writeFileSync(htmlPath, html)
     },
-  }
+  };
 }
 
 export default defineConfig({
   base: './',
-  plugins: [react(), tailwindcss(), viteSingleFile(), inlineCssPlugin()],
+  plugins: [react(), tailwindcss(), viteSingleFile(), inlineCssPlugin(), cloudflare()],
   build: {
     cssCodeSplit: false,
     assetsInlineLimit: 100000000,
