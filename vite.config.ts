@@ -6,4 +6,8 @@ import { viteSingleFile } from 'vite-plugin-singlefile'
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss(), viteSingleFile()],
+  build: {
+    cssCodeSplit: false,
+    assetsInlineLimit: 100000000,
+  },
 })
